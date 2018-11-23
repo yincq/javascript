@@ -1,2 +1,2 @@
-# javascript
-markdown
+#javascript
+这是javascript的一些基础内容
