@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/Chushihua.css"/>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style type="text/css">
+		.div1{
+			width:300px;
+			height:3000px;
+			background-color: #269ABC;
+			color:white;
+			font-size:18px;
+			padding:40px 0 0 20px;
+		}
+		#top{
+			position:fixed;
+			right:10px;
+			bottom:10px;
+			cursor:pointer;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">这是占位置的内容
+	<p>☆☆☆☆☆☆</p>
+	</div>
+	<img id="top" src="images/21.png/"/>
+</body>
+<script type="text/javascript">
+	topobj = document.getElementById("top");
+	window.onscroll=function(){//滚动事件
+		//st=document.body.scrollTop;//google
+		st = document.documentElement.scrollTop;
+		document.title=st;
+		if(st>=400){
+			topobj.style.display="inline"; 
+		}else{
+			topobj.style.display="none";
+		}
+	}
+	topobj.onclick=function(){
+		st = document.documentElement.scrollTop;//已知st
+		v= 10;
+		sobj = setInterval(function(){
+			st-=v;
+			if(st<=0){//小于等于0，就不再往上走，清除定时器
+				st=0;
+				clearInterval(sobj);
+			}
+			document.documentElement.scrollTop=st;
+		},10)
+	}
+	
+	//xxfpw74837 wifi密码
+</script>
+</html>

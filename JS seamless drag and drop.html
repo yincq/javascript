@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 需要引入jquery -->
+	<style type="text/css">
+		#div1{
+			position:absolute;
+			top:0px;
+			left:0px;
+			background-color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<img src="images/230.jpg"/>
+		<!-- 自己换一张自己喜欢的图片 -->
+	</div>
+</body>
+
+<script type="text/javascript">
+	function drag(obj){//拖动函数    obj就是找到div1(装载有图片的div1)
+		obj.bind("mousedown",start); //obj绑定鼠标按下事件  按下的时候执行函数start
+		function start(event){
+			deltaX=event.clientX-obj.offset().left;//事件发生的X坐标 减去这对象离左上角的坐标 offset就是左上角的坐标  已知坐标 减去人本身的坐标  差值就是鼠标所在的地方
+			deltaY=event.clientY-obj.offset().top;
+			
+			$(document).bind("mousemove",move);  //整个文档绑定鼠标移动事件  移动的时候触发move函数
+			$(document).bind("mouseup",stop);  //鼠标一旦放开执行stop函数
+			return false;//浏览器默认行为阻止掉
+		}
+		function move(event){
+			obj.css({//鼠标移动的时候  设置样式  只要移动  重新计算left  top
+				"left":(event.clientX-deltaX)+"px",//deltaX  鼠标在对象内部点击 离对象上与左的距离
+				"top":(event.clientY-deltaY)+"px"
+			})
+			return false;//阻止默认行为  以及阻止事件冒泡
+		}
+		function stop(){
+			//将事件解除
+			$(document).unbind("mousemove",move);
+			$(document).unbind("mouseup",stop);
+		}
+	}
+	var obj = $("#div1");//获取需要拖动的元素
+	drag(obj);//执行函数  将obj传进去
+
+	
+</script>
+</html>

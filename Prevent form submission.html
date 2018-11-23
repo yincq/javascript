@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<form action="" id="fid">
+		<p>用户名：</p>
+		<p><input type="text" id="username"/></p>
+		<p>密码：</p>
+		<p><input type="password" id="userpass" /></p>
+		
+		<p>
+			<input type="submit" value="提交"/>
+		</p>
+		
+	</form>
+</body>
+<script type="text/javascript">
+	
+	
+	var fidobj = document.getElementById("fid");
+	var usernameobj = document.getElementById("username");
+	var userpassobj = document.getElementById("userpass");
+	
+
+	
+		
+		
+		fidobj.onsubmit=function(){
+				var uv=usernameobj.value.length;
+				var pv=userpassobj.value.length;
+				//获取用户输入长度
+				//要求：用户名要大于6位，密码要大于8位
+				if(uv>=6 && pv>=8){
+					return true;
+				}else{
+					return false;
+				}
+		}
+
+</script>
+</html>

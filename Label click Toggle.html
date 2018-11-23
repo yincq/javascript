@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<meta charset="UTF-8">
+		<title>这里是标题</title>
+		<style type="text/css">
+		button{
+			background: #00C6FF;
+		}
+		p{
+			
+			width:180px;
+			height:200px;
+			border:1px solid red;
+			background: #A6E1EC;
+			display:none;
+			overflow:hidden;
+		}
+		</style>
+	</head>
+	<body>
+		<button>PHP</button>
+		<button>Linux</button>
+		<button>javascript</button>
+		
+		<p class="pcls">php的内容</p>
+		<p class="pcls">linux的内容</p>
+		<p class="pcls">javascript的内容</p>
+		
+	</body>
+	<script type="text/javascript">
+		$(".pcls").first().show();//找到下一个
+		
+		$("button").click(function(){
+			idx = $(this).index("button");
+			$(".pcls").eq(idx).show();
+			$(".pcls").not( $(".pcls").eq(idx) ).hide();
+		});
+		
+		
+	</script>
+</html>

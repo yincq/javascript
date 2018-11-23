@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>点击标题</title>
+	<style type="text/css">
+		h1{
+			background:#f0f;
+			color:white;
+			width:800px;
+			line-height:40px;
+			font-size:20px;
+			text-align:center;
+			cursor:pointer;
+		}
+		
+	</style>
+</head>
+<body>
+	<h1>linux</h1>
+		<p>linux is very muth!linux is very muth!linux is very muth!linux is very muth!</p>
+		
+	<h1>php</h1>
+		<p>php is very muth!php is very muth!php is very muth!</p>
+		
+	<h1>javascript</h1>
+		<p>javascript is very muth!javascript is very muth!javascript is very muth!</p>
+	
+</body>
+	<script type="text/javascript">
+		h1s = document.getElementsByTagName("h1");
+		ps = document.getElementsByTagName("p");
+	
+		for(i=0;i<h1s.length;i++){
+			h1s[i].setAttribute("i",0);//轮询h1添加非标准属性
+			h1s[i].setAttribute("s",i);
+			
+			ps[i].setAttribute("id","p"+i);
+			h1s[i].onclick = function(){
+				s = this.getAttribute("s");//得到自己的属性
+				pobj = document.getElementById("p"+s);
+				
+				i = parseInt( this.getAttribute("i") );
+				
+				if(i%2==0){
+					pobj.style.display="none";
+				}else{
+					pobj.style.display="block";
+				}
+				
+			this.setAttribute("i",i+1);
+			}
+
+		}
+	</script>
+	
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/Chushihua.css"/>
+	<link rel="stylesheet" type="text/css" href="css/demo.css"/>
+	<meta charset="UTF-8">
+	<title>左侧导航</title>
+	<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	
+	<div class="main">
+		<ul class="menu"> 
+			<li>全部商品分类</li>
+			<li>服装城</li>
+			<li>美妆馆</li>
+			<li>京东超市</li>
+			<li>京东生鲜</li>
+			<li>全球购</li>
+			<li>闪购</li>
+			<li>团购</li>
+		</ul>
+		
+		<div class="leftmenu">
+			<div class="left">
+				<ul class="leftul">
+					<li class="leftli"><a href="#">家用电器</a>
+						<div class="rightdiv"></div>
+					</li>
+					<li class="leftli"><a href="#">手机\数码</a>
+						<div class="rightdiv"></div>
+					</li>
+					<li class="leftli"><a href="#">电脑\办公</a>
+						<div class="rightdiv"></div>
+					</li>
+					<li class="leftli"><a href="#">家居\女装</a>
+						<div class="rightdiv"></div>
+					</li>
+					<li class="leftli"><a href="#">家居\女装</a>
+						<div class="rightdiv"></div>
+					</li>
+					<li class="leftli"><a href="#">家居\女装</a>
+						<div class="rightdiv"></div>
+					</li>
+				</ul>
+			</div>
+			<div class="center"></div>
+			<div class="right"></div>
+		</div>
+	</div>
+	
+	
+</body>
+<script type="text/javascript">
+	$(".leftli").mouseenter(function(){
+		idx = $(this).index(".leftli");//鼠标网上划，知道是第几个li 高已知
+		mh = idx*31;//第几个*li的高度，将li往上移动
+		$(this).find("div.rightdiv").css({'margin-top':-mh+'px'})
+	})
+</script>
+</html>
