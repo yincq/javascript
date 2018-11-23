@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/sapp.css"/>
+		<meta charset="UTF-8">
+		<title>111</title>
+	</head>
+	<body>
+		<div class="content">
+			<ul class="img" style="left:0px;">
+				<li><img src="images/ina1.jpg" alt="" /></li>
+				<li><img src="images/ina2.jpg" alt="" /></li>
+				<li><img src="images/ina3.jpg" alt="" /></li>
+				<li><img src="images/ina4.jpg" alt="" /></li>
+			</ul>
+			
+			<!--左右按钮-->
+			<div class="btn_left"> &lt; </div>
+			<div class="btn_right"> &gt;</div>
+			
+			<!--小图标部分-->
+			<ul class="icon">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var img = document.getElementsByClassName("img")[0];
+			var content= document.getElementsByClassName("content")[0];
+			var btn_left = document.getElementsByClassName("btn_left")[0];
+			var btn_right = document.getElementsByClassName("btn_right")[0];
+			var icon = document.getElementsByClassName("icon")[0];
+			
+			var index = 1;
+			
+			var left;
+			var timer;
+			var img_width = 500;
+			
+			function move(dis){
+				left = parseInt(img.style.left) ;
+				var new_left = left +dis ;
+				if(new_left < -img_width*3){
+					new_left=0;	
+				}
+				if(new_left>0){
+					new_left= -img_width*3;	
+				}	
+				img.style.left = new_left +"px";
+			}
+			function play(){
+
+				timer = setInterval( function(){
+					move(-img_width);
+					index = index+1;    
+					
+					if(index>4){
+						index=1;
+					}
+					change_icon();
+				},2000);
+			}
+			
+			play();	
+
+			function stop(){
+				clearInterval(timer);
+			}
+
+			content.onmouseover = stop;
+			content.onmouseout = play;
+			btn_left.onclick = function(){
+				move(img_width);
+				index = index-1;
+				if(index < 1){
+					index=4;
+				}
+				change_icon();
+			}
+			
+			btn_right.onclick = function(){
+				move(-img_width);
+				index = index+1;
+				if(index > 4){
+					index=1;
+				}change_icon();
+			}
+			function change_icon(){
+				var li = icon.getElementsByTagName("li"); 			
+				for(var i=0; i<li.length; i++){
+					li[i].className = "";
+				}
+				li[index-1].className ="active";
+			}
+			var lis = icon.getElementsByTagName("li");
+			for(var i = 0; i<lis.length;i++ ){
+					(function(i){
+						lis[i].onclick=function(){
+							var dis =  index - 1 - i  ;
+							move(dis*img_width);
+							index = i + 1;
+							change_icon();}
+					})(i);	
+			}
+		}
+		
+			
+		
+	</script>
+</html>

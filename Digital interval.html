@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	
+	<script type="text/javascript">
+		/*	取随机数（整数100个:
+			[25,99]//25与99都能取到
+			(25,99]//25不能取到 99能取到
+			[25,99)*/
+		document.write("<p>[25,99]:</p>");
+		for (var i=0;i<100;i++){
+				document.write( parseInt(Math.random()*75+25) +"，");	//(99-25)  +25+1
+		}
+		document.write("<br /><br /><p>(25,99]:</p>");
+		for (var i=0;i<100;i++){
+				document.write( parseInt(Math.random()*76+25) +"，");	//99+1+25起始数字
+		}
+		document.write("<br /><br /><p>[25,99):</p>");
+		for (var i=0;i<100;i++){
+				document.write( parseInt(Math.random()*75+24) +"，");	//
+		}
+		
+	</script>
+</head>
+<body>
+	
+	
+</body>
+</html>

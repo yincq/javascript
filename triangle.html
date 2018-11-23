@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">		
+			function abcde(){
+			var n=document.getElementById("input4").value;
+			//判断输入数字是奇数和偶数  如果是偶数： 对2取余为0
+	
+				for(var i=1;i<=n ;i++){//外层循环决定打印多少行   从i开始一直循环到N
+					if(i<=n/2){        //如果i小于2分之n 就是前五行的内容
+						for(var j=1;j<=i;j++){     //再写一个循环 
+							document.write("*");
+						}
+					}else{          
+						for(var j=1;j<=(n-i)+1;j++){   //n-i+1     
+							document.write("*");
+						}
+					}
+					document.write("<br />");			
+				}
+			}
+			
+			
+			for (var i = 10; i > 0; i--) { //控制行数.
+                   for (var j = 1; j <=10; j++) {
+                       //每行打印的个数,每行都要打印,先是打印全是星星.
+                       //然后,逐渐在前面打印空格的个数,减少后面星星的个数.
+                       if (j >= i) {
+                           document.write("☆")
+                       } else {
+                           document.write("&nbsp;");
+                       }
+                   }
+                   document.write("<br />")
+               }
+
+	</script>
+</head>
+<body>
+	
+	<input type="number" id="input4" max="400" min="1" />
+	<input type="button" value="click me" onclick="abcde()" />
+	
+</body>
+</html>

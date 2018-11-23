@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>秒表特效</title>
+
+	
+	<style type="text/css">
+		.clock{
+			width:300px;
+			height:100px;
+			background:#272822;
+			border-radius:20px;
+			margin:150px auto;
+			color:#fff; 
+			line-height:100px;
+			text-align:center;
+			font-size:50px;
+			font-weight:bold;
+			cursor:pointer;
+		}
+		.clock:hover{
+			color:#0ff;
+		}
+
+	
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<span id="sid"></span>
+	</div>
+
+
+</body>
+	<script type="text/javascript">
+	
+	function setTime(){
+		dobj = new Date();
+		hour = dobj.getHours();
+		if(hour <10){
+			hour ="0"+hour;
+		}  
+		minute= dobj.getMinutes();
+		if(minute <10){
+			minute="0"+minute;
+		}  
+		second =dobj.getSeconds();
+		if(second<10){
+			second="0"+second;
+		}  
+		timestr = hour+":"+minute+":"+second;
+		document.getElementById('sid').innerHTML=timestr;
+		}
+		setTime();
+
+		setInterval(function(){
+		setTime();
+
+	},100);
+	
+	
+	
+
+	</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+<body>
+	
+	
+	<div class="content">
+		<ul class="box1" style="left:0;">
+			<li><img src="images/show1.jpg" alt="" /></li>
+			<li><img src="images/show2.jpg" alt="" /></li>
+			<li><img src="images/show1.jpg" alt="" /></li>
+			<li><img src="images/show2.jpg" alt="" /></li>
+		</ul>
+		<ul class="box2">
+			<li><img src="images/show1.jpg" alt="" /></li>
+			<li><img src="images/show2.jpg" alt="" /></li>
+			<li><img src="images/show2.jpg" alt="" /></li>
+			<li><img src="images/show1.jpg" alt="" /></li>
+		</ul>
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){
+		//首先得到2个框
+		//获取的最好写在函数外面
+		var box1 = document.getElementsByClassName("box1")[0];
+		var box2 = document.getElementsByClassName("box2")[0];
+		var content = document.getElementsByClassName("content")[0];//获取外层div
+	
+		var left = 0;
+		var timer ="" ;
+		function move(){
+			left = parseInt( box1.style.left );//首先得到left 整数
+			var new_left= left-1;//每次进入 得到left属性 然后减1
+			if(new_left < -800){//一旦小于框的长度 复位0
+				new_left =0;
+			}
+			box1.style.left = new_left + "px";//left属性等于新的  加上单位
+			box2.style.left = new_left+640+ "px";//加上前面一个框的宽度
+		}
+		//鼠标移入停止
+		//设置轮播速度  可以设置px 也可以设置定时器的时间
+		function play(){
+			timer=setInterval(move,5);//定时器可以存储在变量里面  方便后期清除  clearInterval	
+		}
+		function stop(){
+			clearInterval(timer);
+		}
+		content.onmouseover =stop;//鼠标移入
+		content.onmouseout = play;//鼠标移出
+		play();
+	
+	}
+	
+</script>
+
+
+
+</html>

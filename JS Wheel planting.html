@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<meta charset="UTF-8">
+		<title>111</title>
+	</head>
+	<body>
+		<div class="content">
+			<ul class="img" style="left:0px;"><!--图片部分 保证装完图片-->
+				<li><img src="images/ina1.jpg" alt="" /></li>
+				<li><img src="images/ina2.jpg" alt="" /></li>
+				<li><img src="images/ina3.jpg" alt="" /></li>
+				<li><img src="images/ina4.jpg" alt="" /></li>
+			</ul>
+			
+			<!--左右按钮-->
+			<div class="btn_left"> &lt; </div><!--&lt;是小于符号-->
+			<div class="btn_right"> &gt;</div><!--&lt;是大于符号-->
+			
+			<!--小图标部分-->
+			<ul class="icon">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var img = document.getElementsByClassName("img")[0];
+			var content= document.getElementsByClassName("content")[0];
+			var btn_left = document.getElementsByClassName("btn_left")[0];
+			var btn_right = document.getElementsByClassName("btn_right")[0];
+			var icon = document.getElementsByClassName("icon")[0];
+			
+			var index = 1;//记录当前播放的图片张数
+			
+			var left;
+			var timer;//接收定时器
+			var img_width = 500;
+			
+			
+			function move(dis){
+				left = parseInt(img.style.left) ; //
+				
+				var new_left = left +dis ;//left存储的是ul的left  然后加上调用的参数
+				
+				if(new_left < -img_width*3){
+					//不能让图片一直往前面走 走到第四张就回到第一张    如果新的left小于1张图片的宽度小于3 走到3张就不要继续走了
+					new_left=0;
+					
+				}
+				if(new_left>0){
+//					已经在第一张,不能继续走了 回到第四张
+					new_left= -img_width*3;
+					
+				}
+				
+				img.style.left = new_left +"px";//设置样式 加上单位
+			}
+			function play(){
+				//timer 存储定时器用   方便后面清除定时器
+				//setInterval （ 函数 如text 或者直接function(){}，时间/毫秒 ）
+				timer = setInterval( function(){
+					//在函数里面  调用move  因为有个参数  所以传递上图片的宽度  越来越小，就传递负值过去
+					move(-img_width);
+					index = index+1;    //要这样才能加上来
+					
+					if(index>4){
+						index=1;
+					}//不能无限制的加上去
+					change_icon();//调用  改变图标 因为希望我们的图标能跟着图片一起播放
+				},2000);//1秒调用一次函数
+			}
+			
+			play();	//play是个函数 不会自动执行 所以要执行
+			//上面写了3层
+			
+			//stop里面只做了一个事情 就是清除timer这个变量里的定时器
+			function stop(){
+				clearInterval(timer);
+			}
+			
+			content.onmouseover = stop;//鼠标移入清楚定时器
+			content.onmouseout = play;//鼠标移出设置定时器 调用play
+			
+			
+			//btn_left  左边的按钮  当点击左边的按钮的时候 执行后面的函数
+			//点左边   图片是往右边走  看到左边的图片 left就加
+			btn_left.onclick = function(){
+				move(img_width);//往左边轮播传递负值 往右边传递正  这里      传递一张图片的宽度 正值
+				index = index-1;//index也要进行运算   左边的图片往右边走 走一张 index就减去一个1 即按钮走1格左
+				if(index < 1){
+					index=4;
+				}
+				change_icon();//调用改图标颜色的 函数
+			}
+			
+			btn_right.onclick = function(){
+				//调用move 将图片往后面走  就传递一个负值给函数
+				move(-img_width);//往左边轮播传递负值 往右边传递正  这里传递一张图片的宽度
+				index = index+1;
+				//不能无限的加下去 大于4 等于1
+				
+				if(index > 4){
+					index=1;
+				}
+				change_icon();
+			}
+			
+			//只要index发生改变  图片就变了  然后图标也要改变
+			function change_icon(){
+				var li = icon.getElementsByTagName("li"); //前面得到了icon document.getElementsByClassName("icon") 存储的是装图标的ul 要得到里面的li    定义变量  icon.getElementsByTagName 得到标签名
+				
+				//循环    从0开始  ，通过ul得到 存储的 是li数组，得到4个元素不能同时存在一个变量里，所以数组有个.length属性，
+				for(var i=0; i<li.length; i++){
+					//[i]即下标  清空类名 如果不清空 会全部点亮
+					li[i].className = "";
+				}
+				
+				li[index-1].className ="active";//第一张转换为数组下标 数组从0开始  图片从1开始。所以要减去1才能相等   然后添加类名
+			}
+		}
+		
+		var icons = document.getElementsByClassName("icon")[0];
+		alert(icons);
+		var icon_li = icons.getElementsByTagName("li");
+		for(var i=0;i<icon_li.length;i++){
+			//闭包(function(){}) 存储在一段代码 的内部的叫做闭包
+				(function(i){				
+					icon_li[i].onclick=function(){//通过下标访问    事件等于函数 叫做匿名函数
+						//第一个点了 i等于0   第2个被点了  就等于1
+						//点击第三个 从第一张到第三张 怎么计算？
+						var dis = index - 1 -i;//移动的方向与 距离
+						move(dis*img_width); //move是改变图片left属性的函数	
+						index= i+1;//如果点的第一张 i等于0  但0与index匹配 就加个1 进行更新
+						//因为图标颜色根据index决定的  所以改变的时候调用change_icon();
+						change_icon();
+					}
+				})(i);
+			
+		}
+	</script>
+</html>

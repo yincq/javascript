@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>将a,b,c三个整数按它们数值的大小，从小到大的顺序打印显示。</title>
+
+</head>
+<body>
+		<script type="text/javascript">
+		//输入数值进行更改
+		function abc(){
+			var a = document.getElementById('input1').value;
+			var b = document.getElementById('input2').value;
+			var c = document.getElementById('input3').value;
+			//在函数里可以再调用函数
+			abcd(a,b,c);
+		}
+		function abcd(a,b,c){
+		
+			var d;
+			if(a>b){
+				d=a;
+				a=b;
+				b=d;
+				//完成数据交换
+			}
+			if(b>c){
+				d=b;//先把b存储在d里面，不然下面就会被覆盖掉 想要b的值，就直接拿D
+				b=c;
+				c=d;//要c的值，只有去D里面拿
+			}
+			if(a>b){//数值变成c
+				d=a;
+				a=b;
+				b=d;
+			}
+			document.write(a+"<br/>"+b+"<br/>"+c);
+		}
+		//12345
+
+		//1和2比较 前面大于后面    就进行数据交换  然后换到后面的再和后面的比较 后面的小 然后再进行数据交换
+		//借助中间变量进行数据交换
+	</script>
+	<input name="input1" type="number" id="input1"><br />
+	
+	<input name="input2" type="number" id="input2"><br />
+	
+	<input name="input3" type="number" id="input3"><br />
+	<input type="button" id="" value="click me"  onclick="abc()" />
+	
+</body>
+</html>
+
