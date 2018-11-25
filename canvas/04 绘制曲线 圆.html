@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("docY");
+	var content = canvas.getContext("2d");
+	
+	//绘制曲线4种方法： arc() artTo()  bezierCurveTo()  quadreticCurVeTo()
+	//要求你做一些数学计算
+	//.arc() 绘制一段圆弧   arc()方法画不了椭圆
+	
+	//创建变量  保存圆弧相关信息
+	var centerX = 150;
+	var centerY = 300;
+	var radius = 100;
+	var start1 = 1.25*Math.PI;
+	var end1 = 1.75*Math.PI;
+	
+	//使用确定的信息绘制圆弧
+	content.arc(centerX,centerY,radius,start1,end1);
+	content.stroke();
+	
+	
+	//绘制一个整圆：
+	content.beginPath();
+	
+	content.lineWidth=20;
+	content.strokeStyle = "#cd2828";
+	var centerX_y = 200;
+	var centerY_y = 300;
+	var radius_y = 150;
+	var start_y = 0;
+	var end_y = 2*Math.PI;
+	content.arc(centerX_y,centerY_y,radius_y,start_y,end_y);
+	content.stroke();
+</script>
+</html>

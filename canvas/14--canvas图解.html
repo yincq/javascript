@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#canvas{
+			border: 1px dashed red;
+		}
+	</style>
+</head>
+<body>
+	<hgroup>
+		<h1>欢迎来到FBA性格测试表</h1>
+		<h2>THE Results</h2>		
+	</hgroup>
+	
+	<div class="score">
+		<h2 id="headingE">你的性格E:</h2>
+		<canvas id="canvasE" width="550" height="75"></canvas>
+	</div>
+	<div class="score">
+		<h2 id="headingA">你的性格A:</h2>
+		<canvas id="canvasA" width="550" height="75"></canvas>
+	</div>
+	<div class="score">
+		<h2 id="headingC">你的性格C:</h2>
+		<canvas id="canvasC" width="550" height="75"></canvas>
+	</div>
+	<div class="score">
+		<h2 id="headingN">你的性格N:</h2>
+		<canvas id="canvasN" width="550" height="75"></canvas>
+	</div>
+	<div class="score">
+		<h2 id="headingO">你的性格O:</h2>
+		<canvas id="canvasO" width="550" height="75"></canvas>
+	</div>
+	
+	
+</body>
+<script type="text/javascript">
+//	var canvas = document.getElementById("canvas");
+//	var context = canvas.getContext("2d");
+	window.onload = function(){
+		//取得画布
+		var canvasE = document.getElementById("canvasE");
+		//分数添加到对应的标题后面
+		//分数保存在变量extraversion里
+		document.getElementById("headingE").innerHTML += extraversion;
+		//在对应的画布中标绘分数
+		plotScore(canvasE,extraversion,"Extraversion");
+	}
+	function plotScore(canvas,score,title){
+		var context = canvas.getContext("2d");
+		
+		//在图示的两端绘制骨头
+		var img = document.getElementById("arrow_left");
+		context.drawImage(img,12,10);
+		img = document.getElementById("arrow_right");
+		context.drawImage(img,498,10);
+		
+		//绘制箭头之间的刻度线
+		context.moveTo(39,25);
+		context.lineTo(503,25);
+		context.lineWidth = 10;
+		context.strokeStyle = "rgb(174,215,244)";
+		context.stroke();
+		
+		//把数值写在刻度位置上
+		context.fillStyle = context.strokeStyle;
+		context.font = "italic bold 18px Arial";
+		context.textBaseline = "top";
+		
+		context.fillText("-20",35,50);
+		context.fillText("0",255,50);
+		context.fillText("20",475,50);
+		
+		//绘制星星，显示分数在图示上的位置
+		img = document.getElementById("star");
+		context.drawImage(img,(score+20)/40*440+35-17,0);
+		//分数转为百分比值   一般分数会落在-20 到20之间，所以代码第一步要把这个分数转换为0-40的值  score+20     然后用这个值除以40就可以得到百分比 值 (score+20)/40
+		//得到百分比值后，用它乘以刻度线的长度。0%表示在最左端  100%在最右端，而其他百分比值结果就是位于两端之间：
+			//(score+20)/40*440+35
+			//为了中心点放在相应位置，再次减去星星宽度的一半
+		//(score+20)/40*440+35-17
+		
+	}
+	
+</script>
+</html>

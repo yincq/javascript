@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<canvas id="kill" width="600px" height="600px">
+	</canvas>	
+	
+	<p></p>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+	
+	//绘制文本之前  先要设置绘图上下文的font属性  这个属性的值是一个字符串 与css的font缩写相同
+	//如 context.font = "20px Arial";至少要设置字体大小与名称
+	//不确定用户机子上有什么字体，可以多列出几种 context.font = "20px Arial，Verdana,sans-serif";
+	//加粗要放在开头：     context.font = "bold 20px Arial";
+	//在css3的支持下。还可以使用自己嵌入的字体
+	
+	context.font = "20px Arial";
+	//设置好字体后，调用fillText方法进行文本绘制  
+	
+	context.textBaseline = "top";
+	context.fillStyle = "black";
+	context.fillText("大家好我是绘制",10,10);//放在画布的(10,10)坐标处
+	//但每次只能绘制一行  将一个完整的段落拆分成多行文本 可以参考http://tinyurl.com/6ec7hld
+	
+	//除了fillText方法，还有另一个绘制文本的方法， strokeText()  用于绘制文本的轮廓，轮廓宽度取自lineWidth属性 颜色取自strokeStyle
+	
+	context.font = "40px Arial";
+	context.lineWidth="1";
+	context.strokeStyle="red";
+	context.strokeText("空心的",20,50);
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="Kill" width="600" height="600"></canvas>
+</body>
+
+
+<script type="text/javascript">
+	var canvas = document.getElementById("Kill");
+	var content = canvas.getContext("2d");
+	//也可以在同一个地方调用3次fillRect(),但每次都移动一下坐标系，最终也能达到在三个位置绘制正方形的目的
+	
+	//在（0,0）点绘制正方形
+	context.rect(0,0,30,30);
+	//把坐标系向下，向右各移动50px
+	context.translate(50,50);
+	context.rect(0,0,30,30);
+	
+	//把坐标系再向下移一点，变换是可以累积的
+	//操作下面步骤，(0,0)点实际上被平移到(100,100)
+	context.translate(50,50);
+	context.rect(0,0,30,30);
+	
+	context.stroke();
+	
+	
+	//05,05-1代码得到的结果都一样
+</script>
+</html>

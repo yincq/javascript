@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	
+	//canvas框的左上角是坐标原点 （0,0）
+	//向右移动，X增加  向下移动 y增加
+	
+	//.moveTo()找到直线的起点
+	//.lineTo();终点
+	//.stroke() 将直线实际的绘制起来
+	
+	//.lineWidth  设置线条宽度  单位像素  如设置10px：.lineWidth=10;
+	//.strokeStyle  设置线条颜色  还可以设置渐变的混合颜色
+		//.strokeStyle = "rgb(111,111,111)";
+		//.strokeStyle = "#cd2822";
+		//.lineCap可以设置线条两端的形状  round圆   square加长方头（线条两端会增加一半线宽）butt默认方头
+	//重新开始绘制，上一个自动断开： .beginPath(); 如果没有 后面的语句会将重新绘制
+	
+	var canvas = document.getElementById("docY");
+	
+	var content = canvas.getContext("2d");
+	
+	//设置线条宽度与颜色
+	content.lineWidth=20;
+	content.strokeStyle = "#cd2828";
+	
+	//绘制第一条直线，默认方头
+	content.moveTo(10,50);
+	content.lineTo(400,50);
+	content.lineCap="butt";//设置线段头样式 这里设置方头
+	content.stroke();
+	
+	
+	//绘制第二条直线，圆头
+	content.beginPath();//新线段绘制
+	content.moveTo(10,190);
+	content.lineTo(400,190);
+	content.lineCap="round";//设置线段头样式 这里设置圆头
+	content.stroke();
+	
+	
+</script>
+
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			width:200px;
+		}
+		#kill{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="kill" width="600px" height="600px">
+	</canvas>	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+	//可以创建一个图片对象，然后把一个外部图片加载进来，需要等图片加载完毕，所以需要onload事件发生
+	//对象的src属性后只是开始加载外部图片，但代码没有等到加载完成就立即执行绘图操作。对此，应该调整位置
+	//乍一看这有点违反直觉，因为代码顺序与执行顺序并不一致。
+	//对此而言，context.drawImage()在img.src属性的代码执行后才执行，但代码顺序不一样
+	
+	
+	//创建图片对象：
+	var img = new Image();
+	//img加载完成后执行
+	img.onload=function(){
+		context.drawImage(img,0,0);
+	}
+	//加载图片文件
+	img.src = "images/2.jpg";
+	
+	//有了图片，可以装饰，可以直接绘制图片，可以表示游戏的物体和人物，使用图片代替线段，可以画出“纹理化”的图片
+	
+	
+</script>
+</html>

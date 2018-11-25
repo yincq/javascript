@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			width:200px;
+		}
+		#kill{
+			border:1px solid red;
+		}
+		#autoplay{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="kill" width="500px" height="500px">
+	</canvas>	
+	<video width="600" height="600" id="videoplay" controls="controls">
+		<source src="movies/2.mp4" type="video/mp4"></source>
+	</video>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+
+	var video = document.getElementById("videoplay");
+	
+	//此段代码运行后，会捕获代码运行瞬间正在播放视频中的一帧画面，然后绘制到画布上
+	video.onload=function(){
+		context.drawImage(video,0,0,300,300);
+	}
+	
+	
+	//可以利用一个计时器不断捕获播放中的视频，然后不断将新画面绘制到画布上
+	//还可以在绘制画面之前，对其进行一些修改。比如可以放大或缩小画面，或者取得其中的像素数据，应用某些滤镜效果。
+	//参考文章：http://html5doctor.com/video-canvas-magic
+
+	
+	
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="Kill" width="600" height="600"></canvas>
+</body>
+
+
+<script type="text/javascript">
+	var canvas = document.getElementById("Kill");
+	var content = canvas.getContext("2d");
+	//变换，就是通过变化canvas坐标系达到绘制目的的技术
+	//你想在三个地方绘制相同的正方形，你可以调用3次fillRect().每次都传入不同的起点位置
+	//在3个地方绘制同样大小（30X30）的正方形
+	context.rect(0,0,30,30);
+	context.rect(50,50,30,30);
+	context.rect(100,100,30,30);
+	
+	context.stroke();
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			width:200px;
+		}
+		#kill{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="kill" width="500px" height="500px">
+	</canvas>	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+
+	var img = new Image();
+	
+	img.onload=function(){
+		//有一张300X300的图片  在画布上只绘制上半部分
+		//由此，创建300X150的矩形框，从图片（0,0）开始裁剪
+		//然后将裁剪后的结果绘制到画布上 起点为75,25
+		
+		//参数设置  .drawImage(obj,裁剪框X大小,裁剪框Y大小,裁剪后绘制的X位置,裁剪后绘制的Y位置,X,Y,width,height)
+		context.drawImage(img,0,0,300,150,75,25,200,100,300,150);
+	}
+	
+	img.src = "images/2.jpg";
+
+	
+	
+</script>
+</html>

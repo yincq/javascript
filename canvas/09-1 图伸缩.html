@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			width:200px;
+		}
+		#kill{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="kill" width="600px" height="600px">
+	</canvas>	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+
+	var img = new Image();
+	
+	img.onload=function(){
+		context.drawImage(img,0,0,150,150);
+		//参数设置  .drawImage(obj,X,Y,width,height)
+	}
+	
+	img.src = "images/2.jpg";
+
+	
+	
+</script>
+</html>

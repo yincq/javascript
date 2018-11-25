@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#drawingCanvas{
+			width:900px;
+			height:900px;
+			border:1px solid red;
+		}
+		.toolbar{
+			width:140px;
+			position:fixed;
+			top:0;
+			left:0;
+		}
+		.toolbar img{
+			width:40px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="drawingCanvas">
+		
+	</div>
+	<div class="toolbar">
+		<img src="images/1.jpg/" id="redpen" onclick = "changeColor('rgb(212,21,29)'),this" />
+		<img src="images/2.jpg/" id="redpen" onclick = "changeColor('rgb(131,190,61)'),this" />
+		<img src="images/3.jpg/" id="redpen" onclick = "changeColor('rgb(0,86,166)'),this" />
+	</div>
+</body>
+<script type="text/javascript">
+	//首先 页面加载后，取得canvas对象，为它添加一些处理函数，onMouseDown  onMouseUp onMouseOut  onMouseMove(通过这些事件来控制绘图过程)，代码也把canvas保存在了一个全局变量中（canvas变量）  把绘图上下文保存在另一个全局变量中（变量名为context
+	
+	var canvas;
+	var context;
+	
+	window.onload = function(){
+		//取得canvas和绘图上下文
+		canvas = document.getElementById("drawingCanvas");
+		context = canvas.getContent("2d");
+		
+		//添加用于事件绘图操作的事件处理程序
+		canvas.onmousedown = startDrawing;
+		canvas.onmouseup = stopDrawing;
+		canvas.onmouseout = stopDrawing;
+		canvas.onmousemove = draw;
+	}
+	
+	//点击：
+	
+	var previousColorElement;
+	function changeColor(color,imgElement){
+		//重新设置当前绘图要使用的颜色
+		context.strokeStyle = color;
+		//刚被单击的img元素的样式
+		imgElement.className = "selected";
+		
+		//回复上一次被单击的元素样式
+		if(previousColorElement != null){	previousColorElement.className="";
+		previousColorElement = imgElement;
+	}
+	
+	
+	
+	//绘图：
+	var isDrawing = false;
+	function startDrawing(e){
+		//开始绘图
+		isDrawing = true;
+		//创建新路径
+		context.beginPath();
+		//把画笔放到鼠标当前所在位置
+		context.moveTo(e.pageX - canvas.offsetLeft,e.pageY - canvas.offsetTop);
+		
+	}
+	function draw(e){
+		if(isDrawing == true){
+			//找到鼠标的位置
+			var x = e.pageX - canvas.offsetLeft;
+			var y = e.pageY - canvas.offsetTop;
+			//画一条到新位置的线
+			context.lingTo(x,y);
+			context.stroke();
+		}
+	}
+		function stopDrawing(){
+			isDrawing = false;
+		}
+		function clearCanvas(){
+			context.clearRect(0,0,canvas.width,canvas.height);
+		}
+		
+</script>
+</html>

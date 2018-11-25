@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	<canvas id="point" width="600" height="600"></canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("point");
+	var context = canvas.getContext("2d");
+	
+	//设置填充及描边颜色
+	context.fillStyle = "rgb(100,150,185)";
+	context.lineWidth = 10;
+	context.strokeStyle = "red";
+	
+	
+	//绘制圆形
+	context.arc(110,120,100,0,2*Math.PI);
+	context.fill();
+	content.stroke();
+	//开始新路径绘制
+	context.beginPath();
+	
+	//用globaAlpha设置透明属性   后续所有绘图操作都会取得相同的不透明值 若只需要单个 用rgba即可
+	context.globaAlpha = 0.5;
+	context.fillStyle = "rgb(100,150,185)";
+	
+	//绘制三角：
+	context.moveTo(215,50);
+	context.lineTo(15,250);
+	context.lineTo(315,250);
+	context.closePath();
+	context.fill();
+	context.stroke();
+	
+	
+	
+</script>
+
+</html>

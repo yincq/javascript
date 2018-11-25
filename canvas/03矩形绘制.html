@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("docY");
+	
+	var content = canvas.getContext("2d");
+	
+	//绘制矩形可以使用fillRect()直接填充矩形区域
+	//如：在(0,10)点放置一个100px X 200px像素的矩形，可以使用
+	content.fillStyle = "blue";
+	content.fillRect(0,10,100,200);
+
+	//还有个strokeRect()方法  可以直接绘制矩形框
+	content.beginPath();//进行新线段绘制
+	content.fillStyle = "red";
+	content.strokeRect(30,30,100,200);
+	
+</script>
+</html>

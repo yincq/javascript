@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#canvas{
+			border: 1px dashed red;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="canvas" width="600" height="600"></canvas>
+	<img src="images/415-1.bmp" id="brick" />
+	
+	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	
+	window.onload = function(){
+		var img = document.getElementById("brick");
+
+		//利用绘图上下文的creatrPattern() 创建一个图案对象  可以选择重复方式  repeat repeat-x repeat-y
+		var pattern = context.createPattern(img,'repeat');
+		
+		//使用图案对象设置fillStyle  或strokeStyle
+		context.fillStyle = pattern;
+		context.rect(0,0,canvas.width,canvas.height);
+		context.fill();
+	
+	}
+	
+</script>
+</html>

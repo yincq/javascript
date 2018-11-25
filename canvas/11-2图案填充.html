@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#canvas{
+			border: 1px dashed red;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="canvas" width="600" height="600"></canvas>
+	
+	
+	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	
+	//可以为图形绘制模糊的阴影，可以用小图案填充图形，还有渐变功能
+	
+	//控制阴影的外观 需要绘图上下文的几个属性
+	
+	//shadow  设置阴影颜色  中性灰是最佳选择  或者半透明颜色   
+	//shadowBlur  设置阴影的模糊程度  0为不模糊   不小于3能达到模糊效果
+	//shadowOffsetX  shadowOffsetY 设置偏移量 相对于内容而言
+	
+	//绘制矩形阴影
+	context.rect(20,20,200,100);
+	context.fillStyle = "#8ED6FF";
+	context.shadowColor = "#BBBBBB";
+	context.shadowBlur = 20;
+	context.shadowOffsetX = 15;
+	context.shadowOffsetY = 15;
+	context.fill();
+	
+	
+</script>
+</html>

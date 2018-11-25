@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("docY");
+	
+	var content = canvas.getContext("2d");
+	
+	
+	//绘制红色空心三角形：
+	content.moveTo(250,50);
+	content.lineTo(50,250);
+	content.lineTo(450,250);
+//	content.lineTo(250,50);
+
+	content.closePath();//明确关闭路径
+	content.fillStyle = "blue";//设置填充颜色
+	content.fill();//进行填充操作
+	//如果知道最后会关闭路径，那么最后一条线段可以不要。.closePath会自动在起点和最后一个点之间绘制一条线
+	//最好先填充形成，再绘制轮廓。不然轮廓线有部分会被填充覆盖掉
+	
+</script>
+</html>

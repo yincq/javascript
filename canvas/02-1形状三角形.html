@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("docY");
+	
+	var content = canvas.getContext("2d");
+	//要创建三角形，使用moveTo()定位起点，使用lineTo()绘制每一条线段，然后用closePath补充完成路径，调用fill()填充，调用stroke()描边
+
+	content.moveTo(250,50);
+	content.lineTo(50,250);
+	content.lineTo(450,250);
+	content.closePath();//明确关闭路径
+	
+	//填充内部：
+	content.fillStyle = "blue";//设置填充颜色
+	content.fill();//进行填充操作
+	
+	//绘制轮廓：
+	context.lineWidth = 10;
+	content.strokeStyle = "red";//设置线段颜色
+	context.stroke();//将直线实际的绘制起来 起点终点链接
+	
+	//如果想另外开始绘制一段路径，就使用.beginPath;
+	
+	//如果知道最后会关闭路径，那么最后一条线段可以不要。.closePath会自动在起点和最后一个点之间绘制一条线
+	//最好先填充形成，再绘制轮廓。不然轮廓线有部分会被填充覆盖掉
+	
+</script>
+</html>

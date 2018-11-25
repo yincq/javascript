@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="docY" width="500" height="500"></canvas>
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("docY");
+	var content = canvas.getContext("2d");
+	
+	//绘制曲线4种方法： arc() artTo()  bezierCurveTo()  quadreticCurVeTo()
+	//要求你做一些数学计算
+	
+	//把笔移动到起点位置
+	content.moveTo(62,242)
+	
+	
+	//创建变量 保存2个控制点及曲线终点信息
+	var control1_x = 187;
+	var control1_y = 32;
+	var control2_x = 429;
+	var control2_y = 480;
+	var endPointX = 365;
+	var endPointY = 133;
+	
+	//绘制曲线：
+	content.bezierCurveTo(control1_x,control1_y,control2_x,control2_y,endPointX,endPointY)
+	
+	content.closePath();
+	//http://tinyurl.com/html5bezier  能生成曲线代码
+	//http://tinyurl.com/html5-quadratic
+	
+	
+	
+</script>
+</html>

@@ -1,0 +1,13 @@
+# 使用绘图库
+	有现成的绘图库可以拿来绘制圆形，三角形，椭圆形，多边形。绘图库的设计思路很简单，提供很多高级方法，如fillEllipse()和坐标值就能绘制椭圆。底层使用js帮你完成正确的canvas操作。
+		CanvasPlus(http://code.google.com/p/canvasplus/)和
+		Artisan JS(http://artisanjs.com/)
+		
+#绘制位图
+	与其煞费苦心的在canvas上画图 ，不如找一张现成的图嵌入到canvas中。不过插入图片会失去一些灵活性（如拉伸调整或删除某部分）
+	
+#使用导出工具
+	如果图形复杂，但你想在canvas上操作或者进行交互，那么绘制位图的方法就不够好了。有转换工具：
+	针对illustator->canvas的  http://visitmix/labs/ai2canvas/
+	把illustator插画转成HTML网页，并通过javascript上重新创建相同的图形
+canvas不仅能显示动态图片，开发画图工具，还可以播放动画，在像素级别上处理图像，还可以基于它创建交互游戏。

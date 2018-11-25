@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			width:200px;
+		}
+		#kill{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="kill" width="600px" height="600px">
+	</canvas>
+	<img src="images/2.jpg/" id="imgobj"/>
+
+	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("kill");
+	var context = canvas.getContext("2d");
+	
+	//.drawImage()方法用于在画布上绘制图片 需要先准备图片
+	//.createImageData();可以一个像素一个像素的创建图像，称为像素级操作
+	
+	//使用网页中已有的img元素  如网页中存在这样的标记<img src="images/2.jpg/" id="imgobj"/>
+	
+	//就可以使用下面的方式将图片复制到画布上
+	window.onload=function(){
+		var img = document.getElementById("imgobj");
+		context.drawImage(img,10,10);
+	}
+	
+	
+</script>
+</html>

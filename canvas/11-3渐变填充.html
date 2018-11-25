@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#canvas{
+			border: 1px dashed red;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="canvas" width="600" height="600"></canvas>
+	
+	
+	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	
+	//先创建渐变对象
+//	createLinearGradient()
+//	createRadialGradient()
+	//创建一个从(10,0)到(100,0)的渐变  起点  终点
+	var gradient = context.createLinearGradient(10,0,100,0);
+	
+	//添加两种颜色
+	gradient.addColorStop(0,"magenta");
+	gradient.addColorStop(1,"yellow");
+	
+	
+	context.fillStyle = gradient;
+	context.fillRect(0,10,150,200);
+	context.fill();
+	context.stroke();
+	
+	
+	
+	
+	
+</script>
+</html>
