@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h2>自动选中textarea内容</h2>
+	<textarea rows="10" cols="50" id="autoSelected">
+		默认被选择的文字
+	</textarea>
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+		//调用浏览器内置的文本选定函数
+		document.getElementById("autoSelected").select();
+		
+	}
+</script>
+</html>

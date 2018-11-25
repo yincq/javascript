@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h1>禁止复制与粘贴</h1>
+	<input type="text" id="banCopy" />
+</body>
+<script type="text/javascript">
+	var banCopyPaste = document.getElementById("banCopy")
+	banCopyPaste.oncopy = function(){
+		return false;
+	}//禁止的复制事件
+	banCopyPaste.onpaste = function(){
+		return false;
+	}
+	//原理：为元素 添加copy与paste事件，在事件中返回return
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h2>添加到收藏夹</h2>
+	<input id="addFavorite" type="button" value="添加到收藏夹" />
+</body>
+
+<script type="text/javascript">
+	window.onload=function(){
+		function addFavorite(Furl,title){
+			try{
+				window.external.addFavorite(Furl,title);//IE 第一个参数是收藏的URL，第二个是参数的标题
+			}catch(e){
+				try{
+					window.sidebar.addPanel(title,Furl,"");
+				}catch(error){
+					//如果不支持以上两种收藏 采用提示性收藏
+					alert("加入收藏夹失败，请按下ctrl+D");
+				}
+			}
+		}
+		document.getElementById("addFavorte").onclick=function(){
+			addFavorite("www.baidu.com","百度");
+		}
+	}
+</script>
+</html>
