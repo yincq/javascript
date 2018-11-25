@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		.aClass{
+			color:red;
+		}
+		.bClass{
+			color:blue;
+		}
+		.cClass{
+			font-size:30px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="demo">
+		<h2>1.class绑定：  :class="xxx"</h2>
+		<p class="cClass" :class="a">sss</p><!--静态的与动态的-->
+		<p :class="{aClass:isA,bClass:isB}">dasdasd</p><!--类名:布尔值  true留下    false不留-->
+		<h2>2.style绑定</h2>
+		<p :style="{color:acticeColor,fontSize:fontsize +'px'}">这个是内容</p>
+		<button @click="update">更新</button>  <!--点击的时候触发update里面的数据进行改变-->
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#demo",
+		data:{
+			a:'aClass',
+			isA:true,
+			isB:false ,
+			acticeColor:'red',
+			fontSize:20
+		},
+		methods:{
+			update(){
+				this.a = 'bClass',
+				this.isA = false,
+				this.isB = true,
+				this.acticeColor="green",
+				this.fontSize = 30
+			}
+		}
+		
+	})
+</script>
+</html>

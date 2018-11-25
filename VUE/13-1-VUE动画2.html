@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>VUE动画</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+	/*	进入过程动画*/
+		.bounce-enter-active{
+			animation: bounce-in .5s;
+		}
+	/*	离开过程动画*/
+		.bounce-leave-active{
+			animation: bounce-in .5s reverse;/*reverse : 反转*/
+		}
+		@keyframes bounce-in{
+			0% {
+				transform: scale(0);
+			}
+			50% {
+				transform: scale(1.5);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+	</style>
+		
+</head>
+<body>
+	<div id="example">
+		<button @click="Show = !Show">toggle Show</button>
+		<br>
+		<transition name="bounce">
+			<p v-if="Show" style="display: inline-block;">这里是显示隐藏的文字</p>
+		</transition>
+	</div>
+
+</body>
+<script type="text/javascript">
+
+	new Vue({
+		el:"#example",
+		data(){
+			return {
+				Show : true
+			} 
+		}
+	})
+
+	
+</script>
+</html>

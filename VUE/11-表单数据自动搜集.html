@@ -1,0 +1,74 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单数据自动搜集</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+	</style>
+</head>
+<body>
+	<div id="example">
+		<form action="#" @submit.prevent="handSubmit">
+			<!--prevent 不提交表单 取消默认行为-->
+			<p>用户名：</p>
+			<input type="text" v-model="username"/>
+			<!--username 套路: 在data里面初始化-->
+			
+			<p>密码：</p>
+			<input type="password" v-model="pwd"/>
+			
+			<p>性别：</p>
+			<input type="radio" id="female" value="女" v-model="sex"/>
+			<label for="female">女</label>
+			<input type="radio" id="male" value="男" v-model="sex"/>
+			<label for="male">男</label>
+			
+			<!--多选  选择数组比较合适-->
+			<p>爱好：</p>
+			<input type="checkbox" id="basket" value="basket" v-model="likes"/>
+			<label for="basket">篮球</label>
+			<input type="checkbox" id="foot" value="foot" v-model="likes"/>
+			<label for="foot">足球</label>
+			<input type="checkbox" id="pingpang" value="pingpang" v-model="likes"/>
+			<label for="pingpang">兵乓球</label>
+			
+			<p>城市：</p>
+			<select v-model="cityId">//选择的时候搜集ID 
+				<option :value="city.id" v-for="(city , index) in allCitys" :key="index">{{city.name}}</option> 
+			//value前面加个冒号就不会被看做文本
+				<option value="">未选择</option>
+			</select>
+			
+			<p>介绍：</p>
+			<textarea rows="10" v-model="desc"></textarea>
+			<input type="submit" value="注册" />
+			  
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#example",
+		data:{
+			username:"",//初始值空起来即可 
+			pwd:"",
+			sex:"女",//页面是根据数据来进行显示的，这里默认是女  然后一开始就选中的是女
+			likes:["foot"],//一开始足球被选中
+			allCitys:[{id:1,name:"bj"},{id:2,name:"SH"},{id:3,name:"TJ"}],//每一个城市  2个数据 id和名字   如果要在option里面  就要回到html里遍历产生。 最后提交给后台的是标识的ID 
+			cityId:"3",//默认选择3
+			desc:"大家好，我是",
+		},
+		methods:{
+			handSubmit(){
+				alert(this.username+this.pwd+this.sex+this.likes+this.desc +this.cityId)
+				//后面只需要将这些数据通过ajax 传输给后台即可
+			}
+		}
+	})
+</script>
+</html>

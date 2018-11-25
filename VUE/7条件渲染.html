@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+
+</head>
+<body>
+
+	<div id="demo">
+		<p v-if="ok">成功了</p>
+		<p v-else>失败了</p>
+		
+		<p v-show="ok">表白成功</p>
+		<p v-show="!ok">表白失败</p>
+		<button @click="ok=!ok">切换</button><!--点击的时候将布尔值进行相反操作-->
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#demo",
+		data:{
+		//需要有个标识属性标识是否成功
+		ok:false
+		}
+		
+	})
+</script>
+</html>

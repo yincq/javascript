@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单数据自动搜集</title>
+	<script src="vue.js"></script>
+	<script src="moment.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+		
+	</style>
+		
+</head>
+<body>
+	<div id="example">
+		<h2>显示格式化的日期时间</h2>
+		<p>{{date}}</p>
+
+		<p>完整版： {{date | dateString}}</p>
+
+		<p>年月日： {{date | dateString('YYYY-MM-DD')}}</p>
+		<p>时分秒： {{date | dateString('HH:mm:ss')}}</p>
+
+		<!-- 使用一个竖线指定过滤器的名字  一旦这样写，会把左边的当做值传给过滤器后面的函数，然后取返回值进行显示-->
+	</div>
+</body>
+<script type="text/javascript">
+
+	//自定义过滤
+	//函数对象 Vue是函数
+	//value是需要格式化的值
+	//dateString 是过滤器的名字
+	Vue.filter('dateString',function(value,format){
+		return moment(value).format(format || 'YYYY-MM-DD HH:mm:ss')
+	})
+
+
+	new Vue({
+		el:"#example",
+		data(){
+			date:new Date();
+		}
+	})
+
+	
+</script>
+</html>

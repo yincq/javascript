@@ -1,0 +1,86 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单数据自动搜集</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+		/*定义动画过程  显示  隐藏的过渡效果*/
+		.xxx-enter-active, xxx-leave-actie{
+			transition: opacity 1s;
+		}
+		/*隐藏的样式*/
+		
+		.xxx-enter , xxx-leave-to{
+			opacity:0;
+		}
+	
+
+		/*显示的过渡效果*/
+		.move-enter-active{
+			transition: all 1s;
+		}
+
+		/*隐藏的过渡效果*/
+		.move-leave-active{
+			transition: all 3s;
+		}
+		
+		/*隐藏时的样式*/
+		.move-enter,.move-leave-to{
+			opacity: 0;
+			transform: translateX(40px);
+		}
+		 
+
+	</style>
+		
+</head>
+<body>
+	<div id="example">
+		<button @click="isShow=!isShow">toggle</button>
+	
+	<!-- 	在外面写一个transition标签框住p name随便写 name就是开头 
+	xxx-enter-active:指定显示的transition
+	xxx-leave-active:指定隐藏的transition
+	xxx-enter/xxx-leave-to:指定隐藏时的样式
+
+	-->
+
+		<transition name="xxx">
+			<p v-show="isShow">这里是显示隐藏的文字</p>
+		</transition>
+	</div>
+
+	<div id="example1">
+		<button @click="isShow=!isShow">toggle</button>
+		<transition name="move">
+			<p v-show="isShow">这里是显示隐藏的文字</p>
+		</transition>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#example",
+		data(){
+			return {
+				isShow : true
+			} 
+		}
+	})
+
+	
+	new Vue({
+		el:"#example1",
+		data(){
+			return {
+				isShow : true
+			}
+		}
+	})
+</script>
+</html>

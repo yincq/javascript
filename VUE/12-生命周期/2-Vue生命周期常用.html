@@ -1,0 +1,64 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>生命周期</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+		.k{
+			width:200px;
+			height:200px;
+			background-color:red; 
+		}
+	</style>
+</head>
+<body>
+	<div id="example">
+		<button @click="destoryVM">点击销毁</button>
+		<div class="k" v-show="isShow"></div>
+	</div>
+		
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#example",
+		data:{
+			isShow:true,//一开始是显示  要闪烁  每隔1秒就要闪烁 可以用循环定时器
+
+		},
+
+		mounted(){//初始化显示之后立即调用
+			//只要是回调函数就写箭头函数，this的指向就不会有问题
+			//如果要把一个函数作为参数传递  就用箭头函数(定义匿名函数)
+			//箭头函数特点就是函数内部没有自己的this，没有就用外部的this ，外部的this就是VM对象
+			this.timer = setInterval( ()=>{
+				//如果前面用const定义 作用域下面访问不到 所以this.timer
+				console.log("结束后控制台如果还有这些字说明内存泄露");
+				this.isShow = !this.isShow;//更新数据
+			},1000)
+		},
+		//因为下面结束生命周期后，定时器还在跑，造成内存泄露，所以在生命周期结束之前清除定时器
+
+		
+
+		/*死亡阶段*/
+		beforeDestroy(){
+			clearInterval(this.timer)
+		},
+
+		methods:{
+			destoryVM(){//上面的button通过@click绑定此事件
+				//结束生命周期
+				this.$destroy();
+
+			}
+		}
+	})
+	
+
+</script>
+</html>

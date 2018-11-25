@@ -1,0 +1,42 @@
+<<html>
+<head>
+	<meta charset="UTF-8">
+	<title>最简单的组件使用</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+		<!-- html里面没有这个标记，这个标记就是定义的小组件 在下方VUE component组件定义里定义\
+			强制数据绑定v-bind
+		 -->
+			<game-item v-for="item in games" v-bind:game="item"></game-item>
+			<!-- 使用v-for循环games数组  
+			每次循环后的item传给game属性 v-bind:game="item" -->
+
+		</ul>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	//组件 component：定义页面的局部区域块，完成单独的页面小功能   
+	//小功能互相之间相互独立    因为要涉及组件之间通讯问题，所以进阶才会去学通讯
+	
+	Vue.component("game-item",{
+		props:['game'],//给定义的标记传输并绑定了一个game属性 也就是上面写的v-bind:game
+
+		template:"<li>{{ game.title }}</li>"//模板 在网页渲染的时候将定义的标记替换成什么样的内容 渲染模板中所写的内容   li里面显示的是游戏的标题
+	})
+	
+	var app = new Vue({
+		el:"#app",
+		data:{
+			games:[
+				{title:"吃鸡"},
+				{title:"gmod"},
+				{title:"大逃杀"},
+			]
+		}
+	})
+</script>
+</html>

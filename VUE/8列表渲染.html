@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+
+</head>
+<body>
+
+	<div id="demo">
+		<h2>v-for 遍历数组</h2>
+
+			<ul>
+				<li v-for="(p,index) in persons" :key="index">
+					{{index}}---{{p.name}}---{{p.age}}
+					>>-- <button @click="deleteP(index)">删除</button>
+					-- <button @click="updateP(index,{name:'cat',age:20})">更新</button>	
+				</li>
+				<!-- p,index 当前元素  当前元素下标   遍历的是persons数组 
+				:key键值对一般加上  其中---是没有意义的分隔符
+				-->
+				
+			</ul>
+
+		<h2>v-for遍历对象</h2>
+
+		<ul>
+			<li v-for="(value,key) in persons[1]" :key="value">
+				{{value}}-----{{key}}
+			</li>
+				
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#demo",
+		data:{
+			persons:[//vue本身只是监视了persons的改变,没有监视数组内部的改变
+			//vue重写了数组中的一系列改变数组内部数据的方法（先调用原生方法，然后更新界面）
+				{name:'tom',age:18},
+				{name:'jack',age:12},
+				{name:'bob',age:15},
+				{name:'rose',age:17},
+			]
+		},
+		methods:{
+			deleteP(index){
+				//删除persons中指定index的p
+				this.persons.splice(index,1);
+				//splice能触发界面改变
+			},
+			updateP(index,newP){
+				//this.persons[index] = newP//没有改变persons本身，数组内部发生了变化，但没有调用变异方法（vue重写的数组方法） 不会更新界面
+
+				this.persons.splice(index,1,newP);
+			}
+		}
+	})
+</script>
+</html>

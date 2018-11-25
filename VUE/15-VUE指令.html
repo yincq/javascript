@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>表单数据自动搜集</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		[v-cloak]{
+			display:none;
+		}
+	</style>
+		
+</head>
+<body>
+	<div id="example">
+	    
+		<p ref="content">你好</p>
+		<button @click="hint">提示</button>
+		<!-- <p v-text="mess"></p> -->
+		<p v-cloak>{{mess}}</p>	<br>
+	</div>
+</body>
+<script type="text/javascript">
+
+	new Vue({
+		el:"#example",
+		data(){
+			mess:'你好哦'
+		},
+		methods:{
+			hint(){
+				//存储多个，要么数组要么对象 数组用下标访问 对象用名字访问
+				alert(this.$refs.content.textContent)
+			}
+		},
+	})
+
+	
+</script>
+</html>
