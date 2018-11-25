@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="a" name="myFun" action="a.html">
+			
+			<input type="text" name="textData" />
+			<input type="text" name="numData"  />
+			<input type="submit" />
+		</form>
+		
+		<p>简单的在浏览器上输入
+		<pre>
+			document.myForm.onsubmit=function{return true}void(0);
+		</pre>
+		</p>
+	</body>
+	<script type="text/javascript">
+		document.myFun.onsubmit = function(){
+			return !/\s+/.test(document.myForm.textData.value) && /\d+/.test(document.myForm.numData.value)||alert("请输入正确的格式")||false;
+		}
+		//textData域非空，numData域为数字
+		
+	</script>
+</html>
