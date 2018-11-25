@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+</body>
+
+<script type="text/javascript">
+	
+	(function(){
+		function Person(){
+		var n = "ime";
+		function Person(name){
+			var _this ={}
+			_this._name = name;
+			_this.sayHello = function(){
+				alert("Phello"+_this._name+n);
+			}
+		}
+		return _this;
+		}
+	}());//自调用函数
+	
+	
+	function Teacher(name){
+		var _this = Person(name);
+		var surperSay = _this.sayHello;
+		_this.sayHello = function(){
+			surperSay.call(_this);
+			alert("Thello"+_this._name);
+		}
+		return _this;
+	}
+	var t = Tracher("iwen");
+	t.sayHello;
+</script>
+</html>

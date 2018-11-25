@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	
+</body>
+	
+<script type="text/javascript">
+	function People(){
+		
+	}//js中不存在类的概念，但可以使用function来模拟类    创建一个函数，可以当做类来使用
+	People.prototype.say = function(){//.prototype指定原型链  给个say方法
+		alert("hello");
+	}
+	//如何继承
+	function Student(){//只要实现这个函数扩展至People即可  也就是Student继承至People
+		 
+	}
+	Student.prototype = new People();//现在就是Student继承了Prototype
+	
+	//创建一个对象来测试：
+	var s = new Student();
+	s.say();//如果能通过Student调用.say()方法 说明是成功的
+</script>
+</html>
